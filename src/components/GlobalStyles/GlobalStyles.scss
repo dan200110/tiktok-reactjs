@@ -2,10 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,300&display=swap');
 
 :root {
-  --primary: red
+  --primary: red;
+
+  // default layout
+  --default-layout-header-height: 60px;
+  --default-layout-width: 1150px;
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
