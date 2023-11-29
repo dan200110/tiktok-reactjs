@@ -1,0 +1,28 @@
+// Menu
+
+.content {
+    width: 224px;
+
+
+}
+
+.menu-item {
+    margin-left: 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 8px 0px;
+    background-color: transparent;
+    color: rgb(22, 24, 35);
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.menu-item-icon {
+    margin: 0 14px;
+}
