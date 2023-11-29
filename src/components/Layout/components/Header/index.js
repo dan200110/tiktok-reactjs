@@ -17,6 +17,21 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
+        children: {
+            title: 'Languages',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'Enlish'
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tieng Viet'
+                },
+            ]
+        }
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -30,6 +45,12 @@ const MENU_ITEMS = [
 ]
 function Header() {
     const [searchResult, setSearchResult] = useState([])
+
+    const handleMenuChange = (menuItem) => {
+        console.log('Call handle menu change');
+        console.log(menuItem);
+    }
+
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -72,7 +93,7 @@ function Header() {
                     <Button primary>
                         Log in
                     </Button>
-                    <Menu items={MENU_ITEMS} >
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange()}>
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>
