@@ -7,6 +7,9 @@ import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import { useEffect, useRef, useState } from 'react';
 import { useDebounce } from '~/hooks';
+import * as searchService from '~/apiServices/searchService';
+import axios from 'axios';
+import request from '~/utils/request';
 
 const cx = classNames.bind(styles)
 
@@ -28,16 +31,33 @@ function Search() {
             setSearchResult([])
             return
         }
-        setLoading(true)
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
-            .then(res => res.json())
-            .then(res => {
-                setSearchResult(res.data);
-                setLoading(false)
-            })
-            .catch(() => {
-                setLoading(false)
-            })
+
+        const fetchApi = async () => {
+            setLoading(true)
+
+            const result = await searchService.searchUserName(debounced);
+            setSearchResult(result);
+            setLoading(false)
+
+        }
+
+        // const fetchApi = async () => {
+        //     setLoading(true)
+        //     try {
+        //         const res = await request.get(`users/search`, {
+        //             params: {
+        //                 q: searchValue,
+        //                 type: 'less'
+        //             }
+        //         });
+        //         setSearchResult(res.data.data)
+        //         setLoading(false)
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // }
+        
+        fetchApi()
     }, [debounced])
 
     const inputRef = useRef()
