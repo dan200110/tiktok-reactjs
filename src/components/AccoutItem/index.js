@@ -3,6 +3,7 @@ import styles from './AccoutItem.module.scss';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from 'prop-types';
 
 const cx = classNames.bind(styles)
 
@@ -26,4 +27,7 @@ function AccountItem({ data }) {
     );
 }
 
+AccountItem.propTypes = {
+    data: PropTypes.object
+}
 export default AccountItem;
